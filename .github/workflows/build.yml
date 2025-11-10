@@ -20,7 +20,7 @@ jobs:
         root_file: andrew_joros_resume.tex
         
     - name: Upload PDF artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: andrew_joros_resume
         path: andrew_joros_resume.pdf
