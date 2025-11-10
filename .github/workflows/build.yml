@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v3
       
     - name: Compile LaTeX document
-      uses: xu-cheng/latex-action@v2
+      uses: xu-cheng/latex-action@v3
       with:
         root_file: andrew_joros_resume.tex
         
@@ -24,3 +24,12 @@ jobs:
       with:
         name: andrew_joros_resume
         path: andrew_joros_resume.pdf
+        
+    - name: Commit PDF to repository
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add -f andrew_joros_resume.pdf
+        git diff --staged --quiet || git commit -m "Update compiled PDF [skip ci]"
+        git push

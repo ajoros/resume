@@ -17,6 +17,9 @@
 *.xdv
 *-converted-to.*
 
+## Allow the compiled PDF
+!andrew_joros_resume.pdf
+
 ## Bibliography auxiliary files
 *.bbl
 *.bcf
