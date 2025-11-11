@@ -17,22 +17,33 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       
-    - name: Compile LaTeX document
+    - name: Compile Resume LaTeX document
       uses: xu-cheng/latex-action@v3
       with:
         root_file: andrew_joros_resume.tex
         
-    - name: Upload PDF artifact
+    - name: Compile Biosketch LaTeX document
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: andrew_joros_biosketch.tex
+        
+    - name: Upload Resume PDF artifact
       uses: actions/upload-artifact@v4
       with:
         name: andrew_joros_resume
         path: andrew_joros_resume.pdf
         
-    - name: Commit PDF to repository
+    - name: Upload Biosketch PDF artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: andrew_joros_biosketch
+        path: andrew_joros_biosketch.pdf
+        
+    - name: Commit PDFs to repository
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add -f andrew_joros_resume.pdf
-        git diff --staged --quiet || git commit -m "Update compiled PDF [skip ci]"
+        git add -f andrew_joros_resume.pdf andrew_joros_biosketch.pdf
+        git diff --staged --quiet || git commit -m "Update compiled PDFs [skip ci]"
         git push
