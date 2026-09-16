@@ -182,7 +182,7 @@
             var host = document.getElementById("pdf-pages");
             var status = document.getElementById("pdf-status");
             var pdfDoc = null;
-            var lastWidth = 0;
+            var lastKey = "";
             var renderGen = 0;
 
             // ponytail: canvas pages via pdf.js (no text layer); bump to PDF.js text layer if selection is needed
@@ -197,15 +197,16 @@
 
             function renderPages() {
                 var cssWidth = Math.round(host.clientWidth);
+                var outputScale = Math.max(window.devicePixelRatio || 1, 2);
+                var renderKey = cssWidth + "x" + outputScale;
                 if (!pdfDoc || cssWidth < 32) {
                     return;
                 }
-                if (cssWidth === lastWidth && host.childElementCount) {
+                if (renderKey === lastKey && host.childElementCount) {
                     return;
                 }
                 var gen = ++renderGen;
-                lastWidth = cssWidth;
-                var dpr = Math.min(window.devicePixelRatio || 1, 2);
+                lastKey = renderKey;
                 host.innerHTML = "";
 
                 var chain = Promise.resolve();
@@ -221,24 +222,26 @@
                                 }
                                 var base = page.getViewport({ scale: 1 });
                                 var viewport = page.getViewport({
-                                    scale: (cssWidth / base.width) * dpr
+                                    scale: cssWidth / base.width
                                 });
                                 var canvas = document.createElement("canvas");
                                 canvas.className = "pdf-page";
-                                canvas.width = viewport.width;
-                                canvas.height = viewport.height;
-                                canvas.style.width = cssWidth + "px";
-                                canvas.style.height =
-                                    Math.round((base.height * cssWidth) / base.width) + "px";
+                                canvas.width = Math.floor(viewport.width * outputScale);
+                                canvas.height = Math.floor(viewport.height * outputScale);
+                                canvas.style.width = Math.floor(viewport.width) + "px";
+                                canvas.style.height = Math.floor(viewport.height) + "px";
                                 canvas.setAttribute("role", "img");
                                 canvas.setAttribute(
                                     "aria-label",
                                     "Resume page " + pageNum + " of " + pdfDoc.numPages
                                 );
                                 host.appendChild(canvas);
+                                var ctx = canvas.getContext("2d", { alpha: false });
                                 return page.render({
-                                    canvasContext: canvas.getContext("2d"),
-                                    viewport: viewport
+                                    canvasContext: ctx,
+                                    viewport: viewport,
+                                    transform: [outputScale, 0, 0, outputScale, 0, 0],
+                                    intent: "print"
                                 }).promise;
                             });
                         };
