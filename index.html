@@ -18,12 +18,12 @@
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            padding: 40px;
+            padding: 32px 24px 40px;
         }
         
         header {
@@ -64,12 +64,21 @@
             background: #0052a3;
         }
         
-        .pdf-viewer {
+        /* ponytail: 4 letter pages + Chrome PDF chrome; page scroll, not iframe scroll */
+        .pdf-frame {
             width: 100%;
-            height: 800px;
+            aspect-ratio: 8.5 / 45.5;
+            margin-top: 20px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .pdf-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
         }
         
         .links {
@@ -97,10 +106,6 @@
             h1 {
                 font-size: 2em;
             }
-            
-            .pdf-viewer {
-                height: 600px;
-            }
         }
     </style>
 </head>
@@ -115,11 +120,9 @@
             <a href="andrew_joros_resume.pdf" class="download-btn" download>Download PDF</a>
         </div>
         
-        <iframe class="pdf-viewer" src="andrew_joros_resume.pdf" type="application/pdf">
-            <p>Your browser does not support PDFs. 
-               <a href="andrew_joros_resume.pdf">Download the PDF</a> to view it.
-            </p>
-        </iframe>
+        <div class="pdf-frame">
+            <iframe src="andrew_joros_resume.pdf#view=FitH" title="Andrew Joros resume"></iframe>
+        </div>
         
         <div class="links">
             <a href="https://github.com/ajoros" target="_blank">GitHub</a>
