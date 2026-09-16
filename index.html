@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Andrew Joros - Resume/CV</title>
     <style>
         * {
@@ -10,101 +10,141 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
-        
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 16px;
+            padding-bottom: max(16px, env(safe-area-inset-bottom));
+            overflow-x: hidden;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
+            background: #fff;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            padding: 32px 24px 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 28px 24px 36px;
         }
-        
+
         header {
             text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
             border-bottom: 2px solid #e0e0e0;
         }
-        
+
         h1 {
-            font-size: 2.5em;
-            color: #333;
-            margin-bottom: 10px;
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            margin-bottom: 8px;
         }
-        
+
         .subtitle {
             color: #666;
-            font-size: 1.1em;
+            font-size: 1.05rem;
         }
-        
+
         .download-section {
             text-align: center;
-            margin: 30px 0;
+            margin: 20px 0 24px;
         }
-        
+
         .download-btn {
-            display: inline-block;
-            padding: 12px 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 10px 28px;
             background: #0066cc;
-            color: white;
+            color: #fff;
             text-decoration: none;
             border-radius: 5px;
             font-weight: 600;
-            transition: background 0.3s;
         }
-        
+
         .download-btn:hover {
             background: #0052a3;
         }
-        
-        /* ponytail: 4 letter pages + Chrome PDF chrome; page scroll, not iframe scroll */
-        .pdf-frame {
+
+        .pdf-pages {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             width: 100%;
-            aspect-ratio: 8.5 / 45.5;
-            margin-top: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
         }
 
-        .pdf-frame iframe {
+        .pdf-page {
             width: 100%;
-            height: 100%;
-            border: 0;
+            height: auto;
             display: block;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
         }
-        
-        .links {
+
+        .pdf-status {
             text-align: center;
-            margin-top: 20px;
-            padding-top: 20px;
+            color: #666;
+            padding: 2rem 1rem;
+        }
+
+        .pdf-status a {
+            color: #0066cc;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 20px;
+            margin-top: 24px;
+            padding-top: 16px;
             border-top: 1px solid #e0e0e0;
         }
-        
+
         .links a {
             color: #0066cc;
             text-decoration: none;
-            margin: 0 15px;
+            padding: 10px 8px;
         }
-        
+
         .links a:hover {
             text-decoration: underline;
         }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
+
+        @media (max-width: 640px) {
+            body {
+                padding: 0;
+                padding-bottom: env(safe-area-inset-bottom);
+                background: #fff;
             }
-            
-            h1 {
-                font-size: 2em;
+
+            .container {
+                padding: 20px 12px calc(28px + env(safe-area-inset-bottom));
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .download-btn {
+                width: 100%;
+            }
+
+            .pdf-pages {
+                gap: 8px;
+            }
+
+            .pdf-page {
+                border-radius: 0;
+                border-left: 0;
+                border-right: 0;
             }
         }
     </style>
@@ -115,20 +155,121 @@
             <h1>Andrew Joros</h1>
             <p class="subtitle">Resume / CV</p>
         </header>
-        
+
         <div class="download-section">
-            <a href="andrew_joros_resume.pdf" class="download-btn" download>Download PDF</a>
+            <a href="andrew_joros_resume.pdf" class="download-btn">Download PDF</a>
         </div>
-        
-        <div class="pdf-frame">
-            <iframe src="andrew_joros_resume.pdf#view=FitH" title="Andrew Joros resume"></iframe>
-        </div>
-        
+
+        <p id="pdf-status" class="pdf-status">Loading resume…</p>
+        <div id="pdf-pages" class="pdf-pages"></div>
+
+        <noscript>
+            <style>#pdf-status { display: none; }</style>
+            <p class="pdf-status"><a href="andrew_joros_resume.pdf">Open the PDF</a></p>
+        </noscript>
+
         <div class="links">
-            <a href="https://github.com/ajoros" target="_blank">GitHub</a>
+            <a href="https://github.com/ajoros" target="_blank" rel="noopener">GitHub</a>
             <a href="mailto:andrew.joros@dri.edu">Email</a>
-            <a href="https://github.com/ajoros/resume" target="_blank">View Source</a>
+            <a href="https://github.com/ajoros/resume" target="_blank" rel="noopener">View Source</a>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        (function () {
+            var PDF_URL = "andrew_joros_resume.pdf";
+            var host = document.getElementById("pdf-pages");
+            var status = document.getElementById("pdf-status");
+            var pdfDoc = null;
+            var lastWidth = 0;
+            var renderGen = 0;
+
+            // ponytail: canvas pages via pdf.js (no text layer); bump to PDF.js text layer if selection is needed
+            if (typeof pdfjsLib === "undefined") {
+                status.innerHTML =
+                    'Could not preview here. <a href="' + PDF_URL + '">Open the PDF</a>.';
+                return;
+            }
+
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+                "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+            function renderPages() {
+                var cssWidth = Math.round(host.clientWidth);
+                if (!pdfDoc || cssWidth < 32) {
+                    return;
+                }
+                if (cssWidth === lastWidth && host.childElementCount) {
+                    return;
+                }
+                var gen = ++renderGen;
+                lastWidth = cssWidth;
+                var dpr = Math.min(window.devicePixelRatio || 1, 2);
+                host.innerHTML = "";
+
+                var chain = Promise.resolve();
+                for (var n = 1; n <= pdfDoc.numPages; n++) {
+                    chain = chain.then((function (pageNum) {
+                        return function () {
+                            if (gen !== renderGen) {
+                                return;
+                            }
+                            return pdfDoc.getPage(pageNum).then(function (page) {
+                                if (gen !== renderGen) {
+                                    return;
+                                }
+                                var base = page.getViewport({ scale: 1 });
+                                var viewport = page.getViewport({
+                                    scale: (cssWidth / base.width) * dpr
+                                });
+                                var canvas = document.createElement("canvas");
+                                canvas.className = "pdf-page";
+                                canvas.width = viewport.width;
+                                canvas.height = viewport.height;
+                                canvas.style.width = cssWidth + "px";
+                                canvas.style.height =
+                                    Math.round((base.height * cssWidth) / base.width) + "px";
+                                canvas.setAttribute("role", "img");
+                                canvas.setAttribute(
+                                    "aria-label",
+                                    "Resume page " + pageNum + " of " + pdfDoc.numPages
+                                );
+                                host.appendChild(canvas);
+                                return page.render({
+                                    canvasContext: canvas.getContext("2d"),
+                                    viewport: viewport
+                                }).promise;
+                            });
+                        };
+                    })(n));
+                }
+
+                return chain.then(function () {
+                    if (gen === renderGen) {
+                        status.hidden = true;
+                    }
+                }).catch(function () {
+                    status.hidden = false;
+                    status.innerHTML =
+                        'Could not preview here. <a href="' + PDF_URL + '">Open the PDF</a>.';
+                });
+            }
+
+            pdfjsLib.getDocument(PDF_URL).promise.then(function (pdf) {
+                pdfDoc = pdf;
+                return renderPages();
+            }).catch(function () {
+                status.innerHTML =
+                    'Could not preview here. <a href="' + PDF_URL + '">Open the PDF</a>.';
+            });
+
+            var resizeTimer;
+            window.addEventListener("resize", function () {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(renderPages, 200);
+            });
+        })();
+    </script>
 </body>
 </html>
