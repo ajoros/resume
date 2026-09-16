@@ -3,6 +3,9 @@
 % Author : Andrew Joros
 % Based off of: https://github.com/sb2nov/resume
 % License : MIT
+% Draft 2026-09-15 local only (not pushed).
+% Previous dated PDF: andrew_joros_resume_2026-09-05.pdf
+% Previous GitHub/github.io copy: ../resume-versions/2026-05-28/
 %------------------------
 
 \documentclass[letterpaper,11pt]{article}
@@ -18,7 +21,10 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
+\usepackage{iftex}
+\ifPDFTeX
 \input{glyphtounicode}
+\fi
 
 
 %----------FONT OPTIONS----------
@@ -58,7 +64,9 @@
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
+\ifPDFTeX
 \pdfgentounicode=1
+\fi
 
 %-------------------------
 % Custom commands
@@ -115,7 +123,7 @@
 
 %-----------SUMMARY-----------
 \section{Summary}
-Research computing engineer who builds production-grade data and analytics systems from ingestion to decision-ready delivery. I develop reproducible pipelines, APIs, and interactive applications that turn complex datasets into reliable, actionable insights for technical and non-technical stakeholders.
+Research computing engineer specializing in AI/ML, cloud computing, and data engineering for environmental science applications. Over 12 years developing end-to-end analytical pipelines---from CFD simulations and machine learning models to AI-enhanced analysis and real-time monitoring dashboards---supporting climate research, water resource management, genomics, and wildfire modeling across federal, state, and academic partners.
 
 
 %-----------EXPERIENCE-----------
@@ -126,12 +134,13 @@ Research computing engineer who builds production-grade data and analytics syste
       {Research Computing Engineer (Software Development / Data Scientist)}{2024 -- Current}
       {Division of Atmospheric Science / Division of Hydrologic Sciences, Desert Research Institute}{Reno, NV}
       \resumeItemListStart
-        \resumeItem{Contributed to predictive analytics by validating clustering outputs and automating preprocessing}
-        \resumeItem{Built OpenFOAM post-processing pipeline for snow-transport datasets and wall-shear diagnostics}
-        \resumeItem{Operated automated snow-drought pipeline producing HUC and station classification graphics}
-        \resumeItem{Developed internal DRI-hosted Flask/xarray web app for county climate-risk maps}
-        \resumeItem{Automated Nevada groundwater and projected pumpage reporting across 262 hydrographic basins}
-        \resumeItem{Built public snowpack-runoff decision tool using Leaflet/Plotly and SNOTEL ingestion}
+        \resumeItem{Ported the USGS basin water model from Fortran to Python for rain-on-snow storm tests.}
+        \resumeItem{Cross-compared seven Nevada county water-plan drafts with AI and automated 262-basin pumping figures.}
+        \resumeItem{Track western snow drought each day on a public dashboard fed by mountain snow stations.}
+        \resumeItem{Classified western U.S. spring heatwaves with self-organizing machine learning on two historical weather datasets.}
+        \resumeItem{Converted five alpine wind-flow snow simulations into a fast machine-learning stand-in.}
+        \resumeItem{Combined storm shifts, hourly snow stations, and 7-day soil-moisture plots into a rain-on-snow dashboard.}
+        \resumeItem{Built a Nevada web tool for extreme design storms, watersheds, and area rainfall.}
       \resumeItemListEnd
 
     \resumeSubheading
@@ -142,17 +151,17 @@ Research computing engineer who builds production-grade data and analytics syste
         \resumeItem{Worked with team members on cloud-based data engineering and statistical projects, improving productivity}
         \resumeItem{Led AWS onboarding and training, enhancing the team's cloud computing skills}
         \resumeItem{Created AWS-based solutions for statistical smoke dispersion models for California's fire management}
-        \resumeItem{Developed an AWS front-end webpage delivering Interagency Wildland Fire Air Quality statistical outputs}
+        \resumeItem{Developed a dynamic front-end webpage using AWS, presenting statistical modeling outputs related to Interagency Wildland Fire Air Quality, empowering stakeholders with valuable insights into air quality conditions}
       \resumeItemListEnd
       
     \resumeSubheading
       {Staff Research Scientist (Software Development / Data Scientist)}{2016 -- 2019}
       {Applied Innovation Center, Desert Research Institute}{Reno, NV}
       \resumeItemListStart
-        \resumeItem{Developed groundwater survey software using vertical electrical sounding to improve well siting and drilling}
-        \resumeItem{Contributed to meteorological and air pollutant data pipelines supporting Healthy Nevada Project research}
+        \resumeItem{Developed water surveying software for groundwater assessment using vertical electrical sounding, enhancing well siting and drilling}
+        \resumeItem{Contributed to the construction of meteorological and air pollutant data pipeline, aiding environmental research for the Healthy Nevada Project}
         \resumeItem{Integrated Christopher Ranch's sensor data into AWS for storage and machine learning use}
-        \resumeItem{Built AWS EC2 probabilistic insect and disease models for pest management and crop protection}
+        \resumeItem{Leveraged AWS EC2 to devise and implement cutting-edge agricultural insect and disease probabilistic models, empowering customers with accurate predictions for effective pest management and crop protection}
         \resumeItem{Created an automated AWS sensor alert system for data integrity and reliability}
       \resumeItemListEnd
 
@@ -160,8 +169,8 @@ Research computing engineer who builds production-grade data and analytics syste
       {Assistant Research Scientist (High Performance Computing)}{2015 -- 2016}
       {Applied Innovation Center, Desert Research Institute}{Reno, NV}
       \resumeItemListStart
-        \resumeItem{Constructed backend data architecture for WINDS, improving weather processing and decision support}
-        \resumeItem{Developed a web portal for NDOT, enabling traffic-data analysis for transportation planning}
+        \resumeItem{Constructed backend data architecture for the WINDS platform, improving weather data processing and decision support}
+        \resumeItem{Developed a web portal for NDOT, enabling engineers to access and analyze traffic data for transportation planning}
         \resumeItem{Led NevCAN's data visualization project, presenting real-time climate and ecological data effectively}
         \resumeItem{Created an image processing algorithm for greenhouse experiments to analyze vegetation health and growth}
       \resumeItemListEnd
@@ -171,7 +180,7 @@ Research computing engineer who builds production-grade data and analytics syste
       {Desert Research Institute}{Reno, NV}
       \resumeItemListStart
         \resumeItem{Used Earth Engine JavaScript API for geospatial data analysis in hydrometeorology}
-        \resumeItem{Contributed to Climate and Integrated Earth Monitoring Engine dashboard, improving data visualization}
+        \resumeItem{Contributed to the Climate and Integrated Earth Monitoring Engine dashboard, enhancing environmental data visualization}
         \resumeItem{Processed Landsat and weather data via cloud computing, aiding Nevada's ecosystem analysis and conservation}
         \resumeItem{Evaluated precipitation datasets against Texas weather stations to improve irrigation and water management}
       \resumeItemListEnd
@@ -190,7 +199,7 @@ Research computing engineer who builds production-grade data and analytics syste
       {Statistical Analyst}{Summer 2009}
       {Atmospheric Systems Corporation}{Valencia, CA}
       \resumeItemListStart
-        \resumeItem{Conducted statistical QA/QC of SODAR output data to ensure reliability}
+        \resumeItem{Conducted statistical quality assurance and quality control (QA/QC) of output data from Sonic Detection and Ranging (SODAR) systems}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
@@ -212,11 +221,11 @@ Research computing engineer who builds production-grade data and analytics syste
 \section{Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Programming Languages}{: Python, MATLAB, R, JavaScript, SQL} \\
-     \textbf{Data \& Scientific Computing}{: xarray, pandas, NumPy, NetCDF, Parquet, JSON} \\
-     \textbf{Modeling \& Visualization}{: OpenFOAM, ParaView, PyVista, Matplotlib, Plotly, ArcGIS} \\
-     \textbf{Web \& APIs}{: Flask, Django, Leaflet, HTML5, CSS, REST APIs} \\
-     \textbf{Cloud \& DevOps}{: Amazon Web Services, Google Cloud Platform, Azure, Git, GitHub Actions} \\
+     \textbf{Programming Languages}{: Python, MATLAB, R, Java, C/C++, FORTRAN, Scala} \\
+     \textbf{Scientific / ML}{: xarray, scikit-learn, MiniSom, OpenFOAM, ParaView, PyVista, ArcGIS} \\
+     \textbf{Software Frameworks}{: Apache Hadoop, Apache Spark, Cloudera CDH, Flask, Django} \\
+     \textbf{Web Design}{: HTML5, CSS, JavaScript, Highcharts, PHP, MySQL} \\
+     \textbf{Cloud Platforms}{: Amazon Web Services, Google Cloud Platform, Azure} \\
      \textbf{Operating Systems}{: Linux (Ubuntu/CentOS/Redhat), Windows}
     }}
  \end{itemize}
@@ -224,45 +233,64 @@ Research computing engineer who builds production-grade data and analytics syste
 
 %-----------PUBLICATIONS AND REPORTS-----------
 \section{Publications and Reports}
- \begin{enumerate}[leftmargin=0.25in, label=\arabic*.]
-    \small{\item Yu, G., Miller, J. J., Mejia, J. F., Rasouli, K., McCarthy, M. I., Joros, A. N., O'Shea, K. (2026). Updating the Probable Maximum Precipitation for Nevada. Damon, N. E. (ed.), Division of Hydrologic Sciences, Desert Research Institute: Nevada Division of Water Resources, June 30, 2025, DHS publication \#41312.}
-    \item Luo, S., Jiang, R., Grzymski, J.J., Lee, W., \& Joros, A. (2021). Comprehensive allele genotyping in critical pharmacogenes reduces residual clinical risk in diverse populations. Clinical Pharmacology \& Therapeutics, 110(4), 899–911.
-    \item Kiser, D., Metcalf, W.J., Elhanan, G., Schnieder, B., Schlauch, K., Joros, A., Petersen, C. and Grzymski, J., 2020. Particulate matter and emergency visits for asthma: a time-series study of their association in the presence and absence of wildfire smoke in Reno, Nevada, 2013–2018. Environmental Health, 19(1), pp.1-12.
-    \item Nauslar, N.J., Hatchett, B.J., Brown, T.J., \& Joros, A. (2019). Impact of the North American monsoon on wildfire activity in the southwest United States. International Journal of Climatology, 39(4), 1861–1879.
-    \item Abatzoglou, J.T., McEvoy, D.J., Joros, A., et al. (2017). The West Wide Drought Tracker: Drought Monitoring at Fine Spatial Scales. Bulletin of the American Meteorological Society, 98(9), 1815–1820.
-    \item Caldwell, T. G., Huntington, J. L., Scanlon, B., Joros, A. N., Howard, T., (2017): Improving Irrigation Water Use Estimates with Remote Sensing Technologies: An Initial Feasibility Study for Texas, 137 p., University of Texas, Bureau of Economic Geology: Austin, TX, Report prepared for Texas Water Development Board.
-    \item Joros, A., J. Abatzoglou, N. Nauslar, B. Hatchett, M. Kaplan, (2017) Extratropical Control of Monsoonal Surges in the Great Basin. Monthly Weather Review (In Progress)
-    \item Huntington, J. L., Gangopadhyay, S., Spears, M., Allen, R., King, D. L., Morton, C. G., Harrison, A., McEvoy, D. J., Joros, A. N., (2015): West-Wide Climate Risk Assessments: Irrigation Demand and Reservoir Evaporation Projections, Technical memorandum No. 68-68210-2014-01, 218 p, 754 appx, U.S. Bureau of Reclamation
-    \item Morton, C. G., Huntington, J. L., Allen, R. G., Kilic, A., Joros, A. N. (2015). More Landsat Satellites Equates to More Reliable Monitoring of Water Consumption. Remote Sensing.
-    \item Brown, T., Larkin, N.K., Rorig, M., \& Joros, A. (2013). Improving Meteorological Data and Forecasts for Prescribed Fire Burn Day Decisions for the Lake Tahoe Basin. CEFA Final Report (SNPLMA).
-    \item Joros, A., M. Kaplan, J. Abatzoglou (2011) Extratropical Control of Monsoonal Surges in the Great Basin. (Master's Thesis)
+ {\small
+ \noindent\textbf{2026}\\[-4pt]
+ \begin{enumerate}[leftmargin=0.25in, label=\arabic*., itemsep=2pt, parsep=0pt]
+    \item Rhoades, A. M., North, J. S., Rudisill, W., Hatchett, B. J., Risser, M., Beltran-Pe{\~n}a, A., Heggli, A., Hotaling, S., Huning, L. S., Joros, A., LaPlante, M., Mahesh, A., Marshall, A. M., McCrary, R., McEvoy, D. J., Rahimi, S., Raleigh, M. S., Randall, C., Srivastava, A., Wehner, M., Zhou, Y., \& Jones, A. D. (2026). Snow-eater heat waves of the western United States. Science Advances, 12(32), eaeb3361. AAAS, August 5, 2026. \url{https://doi.org/10.1126/sciadv.aeb3361}
+    \item Yu, G., Miller, J. J., Mejia, J. F., Rasouli, K., McCarthy, M. I., Joros, A. N., \& O'Shea, K. (2026). Updating the Probable Maximum Precipitation for Nevada. Division of Hydrologic Sciences, Desert Research Institute, DHS Publication \#41312, prepared for the Nevada Division of Water Resources, June 30, 2025.
  \end{enumerate}
+ \vspace{-6pt}\noindent\textbf{2020}\\[-4pt]
+ \begin{enumerate}[leftmargin=0.25in, label=\arabic*., resume, itemsep=2pt, parsep=0pt]
+    \item Kiser, D., Metcalf, W. J., Elhanan, G., Schnieder, B., Schlauch, K., Joros, A., Petersen, C., \& Grzymski, J. (2020). Particulate matter and emergency visits for asthma: a time-series study of their association in the presence and absence of wildfire smoke in Reno, Nevada, 2013--2018. Environmental Health, 19, 92. BioMed Central, August 27, 2020. \url{https://doi.org/10.1186/s12940-020-00646-2}
+ \end{enumerate}
+ \vspace{-6pt}\noindent\textbf{2017}\\[-4pt]
+ \begin{enumerate}[leftmargin=0.25in, label=\arabic*., resume, itemsep=2pt, parsep=0pt]
+    \item Caldwell, T. G., Huntington, J. L., Scanlon, B., Joros, A. N., \& Howard, T. (2017). Improving Irrigation Water Use Estimates with Remote Sensing Technologies: An Initial Feasibility Study for Texas, 137 p. University of Texas, Bureau of Economic Geology: Austin, TX. Report prepared for the Texas Water Development Board.
+ \end{enumerate}
+ \vspace{-6pt}\noindent\textbf{2015}\\[-4pt]
+ \begin{enumerate}[leftmargin=0.25in, label=\arabic*., resume, itemsep=2pt, parsep=0pt]
+    \item Huntington, J. L., Gangopadhyay, S., Spears, M., Allen, R., King, D. L., Morton, C. G., Harrison, A., McEvoy, D. J., \& Joros, A. N. (2015). West-Wide Climate Risk Assessments: Irrigation Demand and Reservoir Evaporation Projections. Technical Memorandum No. 68-68210-2014-01, 218 p., 754 appx. U.S. Bureau of Reclamation.
+ \end{enumerate}
+ \vspace{-6pt}\noindent\textbf{2013}\\[-4pt]
+ \begin{enumerate}[leftmargin=0.25in, label=\arabic*., resume, itemsep=2pt, parsep=0pt]
+    \item Brown, T., Larkin, N. K., Rorig, M., \& Joros, A. (2013). Improving Meteorological Data and Forecasts for Prescribed Fire Burn Day Decisions for the Lake Tahoe Basin. CEFA Final Report (SNPLMA).
+ \end{enumerate}
+ \vspace{-6pt}\noindent\textbf{2011}\\[-4pt]
+ \begin{enumerate}[leftmargin=0.25in, label=\arabic*., resume, itemsep=2pt, parsep=0pt]
+    \item Joros, A. (2011). Extratropical Control of Monsoonal Surges in the Great Basin. Master's thesis, University of Nevada, Reno, NV.
+ \end{enumerate}
+ \vspace{-6pt}\noindent\textbf{2009}\\[-4pt]
+ \begin{enumerate}[leftmargin=0.25in, label=\arabic*., resume, itemsep=2pt, parsep=0pt]
+    \item Joros, A., \& Abatzoglou, J. (2009). Analysis of Monsoonal Surges into Southern California Deserts. Senior thesis, San Jose State University, San Jose, CA.
+ \end{enumerate}
+ }
 
 
 %-----------CONFERENCE PAPERS/PRESENTATIONS-----------
 \section{Conference Papers/Presentations}
- \begin{enumerate}[leftmargin=0.25in, label=\arabic*.]
-    \small{\item Saftner, D. M., Arienzo, M. M., Atkin, J., Daniel, A. T., Dunkerly, C. W., Gordon, B., Greene, S. J., Huntington, J. L., Joros, A. N., Kozloski, R., Lutz, A. D., Parker, B. A., ReVelle, P., VanderMolen, K.A. (2026). Developing Water Resource Plans for Rural Nevada. Nevada Tribal Food and Agriculture Summit: Sparks, NV, March 24--27, 2026.}
-    \item McEvoy, D. J., Rhoades, A., Huning, L., Heggli, A. E., Hatchett, B., Joros, A. N. (2025). Storm-scale impacts on seasonal snow droughts: A case study in the Pacific Northwest, United States. American Geophysical Union Annual Meeting: New Orleans, LA, December 17, 2025.
-    \item McEvoy, D. J., Rhoades, A., Huning, L., Heggli, A. E., Hatchett, B., Joros, A. N. (2025). Storm-scale impacts on seasonal snow droughts: A case study in the Pacific Northwest, United States. International Mountain Conference poster: Innsbruck, Austria, September 14--18, 2025.
-    \item Yu, G., Miller, J. J., Mejia, J. F., Rasouli, K., McCarthy, M. I., O'Shea, K., Joros, A. N. (2025). Updating the Probable Maximum Precipitation for Nevada. 2025 NWRA Annual Conference: Sparks, NV, January 27--30, 2025.
-    \item Hatchett, B., Abatzoglou, J., Joros, A. (2019). Monsoon-driven variability in fire--climate linkages. Presented at Western Governors' Association Fire \& Climate Science meeting.
-    \item Rowan, C., Metcalf, W. J., Elhanan, G., Joros, A. N., \& Grzymski, J. J. (2018). Short-Term Sentinel Air Events in Relation to Health Care Utilization for Specific Health Conditions in Reno, Nevada. In B24. AN UPDATE ON INDOOR AND OUTDOOR AIR POLLUTION (pp. A2815-A2815). American Thoracic Society.
-    \item Rosenquist, N. A., Metcalf, J., Elhanan, G., Grzymski, J., Joros, A. N., Field-Ridley, A., \& Darrow, L. A. (2018, August). Acute Associations between PM2. 5 and Allergic and Nonallergic Asthma Exacerbations in Children and Adults. In ISEE Conference Abstracts (Vol. 2018, No. 1).
-    \item Hegewisch, K., Daudert, B., Morton, C. G., Peterson, A., Joros, A. N., McEvoy, D. J., Erickson, T., Huntington, J. L., Abatzoglou, J. T. (2015). Google Drought Monitoring Through Cloud Computing and Visualization of Remote Sensing and Meteorological Datasets: Examples for California, American Geophysical Union Chapman Conference: Irvine, CA, April 20, 2015-April 22, 2015
-    \item Huntington, J. L., Daudert, B., Morton, C. G., McEvoy, D. J., Joros, A. N., Abatzoglou, J. T., Hegewisch, K., Peterson, A., Vansant, D. S., Allen, R., Kilic, A., Hobbins, M., Verdin, J. (2015). Cloud Computing for Drought Monitoring with Google Earth Engine, U.S. Drought Monitor Forum: Desert Research Institute, Reno, NV, April 14, 2015-April 16, 2015
-    \item Huntington, J. L., Morton, C. G., McGwire, K. C., Allen, R., Gorelick, N., Thau, D., Joros, A. N. (2014). Monitoring Groundwater Dependent Ecosystems in the Great Basin from Space and Clouds, American Water Resources Association Summer Specialty Conference: Reno, NV, May 31, 2014-July 2, 2014
-    \item Huntington, J. L., Morton, C. G., McGwire, K. C., Joros, A. N., Peterson, S., Gorelick, N., Thau, D., Allen, R. (2014). Cloud Computing of Landsat Imagery and Gridded Weather Data for Evaluating Groundwater Dependent Ecosystems in Nevada, Nevada Water Resources Association Annual Conference: Las Vegas, NV, February 2, 2014-February 2, 2014
-    \item Richard G. Allen, University of Idaho, Kimberly, ID; and J. L. Huntington, A. Kilic, H. Debruin, and A. Joros, (2013): Conditioning of NLDAS, NARR and arid weather station data to improve their representation of well-watered (reference) environments associated with irrigated agriculture. 93rd AMS Annual Meeting, 27th Conference on Hydrology, Austin, TX, 5-10 January 2013
-    \item Kelly T. Redmond, DRI, Reno, NV; and J.T. Abatzoglou, D. McEvoy, A. Joros, D. VanSant, and L. M. Edward, (2013): The WestWide Drought Tracker: Drought Monitoring at Fine Spatial Scales 93rd AMS Annual Meeting, Austin, TX, 5-10 January 2013
-    \item Nauslar, Nick, J. Abatzoglou, A. Joros (2011): Development of an objective methodology for diagnosing Santa Ana winds. Ninth Symposium on Fire and Forest Meteorology, Palm Springs, CA, 18-20 October 2011
-    \item Joros, A., J. F. Mejia (2011): Impact of Eastern and Central Pacific ENSO events over the Continental United States. AMS Applied Climatology Conference 2011, Asheville, North Carolina, 18–20 July 2011
-    \item King, K. C., M. L. Kaplan, A. Joros, M. Liddle and E. Uher, (2011): Evaluation of the Operational Multi-scale Environment model with Grid Adaptivity (OMEGA) for use in Wind Energy Potential Assessment in the Great Basin of Nevada. Weather, Climate, and the New Energy Economy - Observations, Modeling, and Data for the Energy Sector. 91st AMS Annual Meeting, Seattle WA, 23-27 January 2010.
-    \item Abatzoglou, J.T., K.T. Redmond, L.M. Edwards and A. Joros (2011): Monitoring of drought in the western United States: metrics suitable for tracking drought historically and throughout the 21st century. 91st AMS Annual Meeting, Seattle WA, 23-27 January 2010.
-    \item Joros, A., J. Abatzoglou, J. Favors, B. Tan, M. Kaplan (2010): Extratropical Control of Monsoonal Surges into the Great Basin. AMS Mountain Meteorology Conference, Lake Tahoe, CA, 30 August – 3 September 2010.
-    \item Tan, B., A. Joros, and M. L. Kaplan, (2010): The Role of Midlatitude Circulations in Triggering Extratropical Convection during the 2004 North American Monsoon. 90th AMS Annual Meeting, Atlanta, GA, 17-22 January 2010.
-    \item King, K.C., M. Kaplan, A. Joros, M. Liddle, E. Uher (2010): Evaluation of the Operation Multiscale Model with Grid Adaptivity (OMEGA) for use in Wind Energy Potential Assessment in the Great Basin of Nevada. AMS Mountain Meteorology Conference, Lake Tahoe, CA, 30 August – 3 September 2010.
-    \item Uher, Erich, M. Kaplan, A. Joros, D. Decker (2010) Air Pollution Dispersion Forecasting: A Climatological Study of Cape Canaveral Tropospheric Wind Patterns. 90th AMS Annual Meeting, Atlanta, GA, 17-22 January 2010.
+ \begin{enumerate}[leftmargin=0.25in, label=\arabic*., itemsep=2pt, parsep=0pt]
+    \small{\item Saftner, D. M., Arienzo, M. M., Atkin, J., Daniel, A. T., Dunkerly, C. W., Gordon, B., Greene, S. J., Huntington, J. L., Joros, A. N., Kozloski, R., Lutz, A. D., Parker, B. A., ReVelle, P., \& VanderMolen, K. A. (2026). Developing Water Resource Plans for Rural Nevada. Nevada Tribal Food and Agriculture Summit: Sparks, NV, March 24--27, 2026, Invited.}
+    \item Yu, G., Miller, J. J., Mejia, J. F., Rasouli, K., McCarthy, M. I., O'Shea, K., \& Joros, A. N. (2025). Updating the Probable Maximum Precipitation for Nevada. 2025 NWRA Annual Conference: Sparks, NV, January 27--30, 2025.
+    \item McEvoy, D. J., Rhoades, A., Huning, L., Heggli, A. E., Hatchett, B., \& Joros, A. N. (2025). Storm-scale impacts on seasonal snow droughts: A case study in the Pacific Northwest, United States. American Geophysical Union Annual Meeting: New Orleans, LA, December 17, 2025.
+    \item McEvoy, D. J., Rhoades, A., Huning, L., Heggli, A. E., Hatchett, B., \& Joros, A. N. (2025). Storm-scale impacts on seasonal snow droughts: A case study in the Pacific Northwest, United States. International Mountain Conference: Innsbruck, Austria, September 14--18, 2025.
+    \item Hatchett, B., Abatzoglou, J., \& Joros, A. (2019). Monsoon-driven variability in fire-climate linkages. Western Governors' Association Fire \& Climate Science meeting.
+    \item Rowan, C., Metcalf, W. J., Elhanan, G., Joros, A. N., \& Grzymski, J. J. (2018). Short-term sentinel air events in relation to health care utilization for specific health conditions in Reno, Nevada. American Thoracic Society International Conference, B24, A2815.
+    \item Rosenquist, N. A., Metcalf, J., Elhanan, G., Grzymski, J., Joros, A. N., Field-Ridley, A., \& Darrow, L. A. (2018). Acute associations between PM2.5 and allergic and nonallergic asthma exacerbations in children and adults. ISEE Conference Abstracts, 2018(1).
+    \item Huntington, J. L., Daudert, B., Morton, C. G., McEvoy, D. J., Joros, A. N., Abatzoglou, J. T., Hegewisch, K., Peterson, A., Vansant, D. S., Allen, R., Kilic, A., Hobbins, M., \& Verdin, J. (2015). Cloud computing for drought monitoring with Google Earth Engine. U.S. Drought Monitor Forum: Desert Research Institute, Reno, NV, April 14--16, 2015, Invited.
+    \item Hegewisch, K., Daudert, B., Morton, C. G., Peterson, A., Joros, A. N., McEvoy, D. J., Erickson, T., Huntington, J. L., \& Abatzoglou, J. T. (2015). Google drought monitoring through cloud computing and visualization of remote sensing and meteorological datasets: Examples for California. American Geophysical Union Chapman Conference: Irvine, CA, April 20--22, 2015.
+    \item Huntington, J. L., Morton, C. G., McGwire, K. C., Allen, R., Gorelick, N., Thau, D., \& Joros, A. N. (2014). Monitoring Groundwater Dependent Ecosystems in the Great Basin from Space and Clouds. American Water Resources Association Summer Specialty Conference: Reno, NV, May 31--July 2, 2014.
+    \item Huntington, J. L., Morton, C. G., McGwire, K. C., Joros, A. N., Peterson, S., Gorelick, N., Thau, D., \& Allen, R. (2014). Cloud Computing of Landsat Imagery and Gridded Weather Data for Evaluating Groundwater Dependent Ecosystems in Nevada. Nevada Water Resources Association Annual Conference: Las Vegas, NV, February 2, 2014.
+    \item Huntington, J. L., Morton, C. G., McGwire, K. C., Joros, A. N., Peterson, S., Gorelick, N., Thau, D., \& Allen, R. (2014). Utilizing Cloud Computing of Landsat Imagery and Gridded Weather Data for Evaluating Groundwater Dependent Ecosystems in Nevada. Nevada Water Resources Association Annual Conference: Las Vegas, NV, February 3--6, 2014.
+    \item Allen, R. G., Huntington, J. L., Kilic, A., Debruin, H., \& Joros, A. (2013). Conditioning of NLDAS, NARR and arid weather station data to improve their representation of well-watered (reference) environments associated with irrigated agriculture. 93rd AMS Annual Meeting, 27th Conference on Hydrology: Austin, TX, January 5--10, 2013.
+    \item Redmond, K. T., Abatzoglou, J. T., McEvoy, D., Joros, A., VanSant, D., \& Edwards, L. M. (2013). The WestWide Drought Tracker: Drought Monitoring at Fine Spatial Scales. 93rd AMS Annual Meeting: Austin, TX, January 5--10, 2013.
+    \item Nauslar, N., Abatzoglou, J., \& Joros, A. (2011). Development of an objective methodology for diagnosing Santa Ana winds. Ninth Symposium on Fire and Forest Meteorology: Palm Springs, CA, October 18--20, 2011.
+    \item Joros, A., \& Mejia, J. F. (2011). Impact of Eastern and Central Pacific ENSO events over the Continental United States. AMS Applied Climatology Conference: Asheville, NC, July 18--20, 2011.
+    \item Uher, E., Kaplan, M. L., Joros, A., \& Decker, D. (2011). Air pollution dispersion forecasting: A climatological study of Cape Canaveral tropospheric wind patterns. 91st AMS Annual Meeting: Seattle, WA, January 23, 2011.
+    \item King, K. C., Kaplan, M. L., Joros, A., Liddle, M., \& Uher, E. (2011). Evaluation of the Operational Multi-scale Environment model with Grid Adaptivity (OMEGA) for use in Wind Energy Potential Assessment in the Great Basin of Nevada. 91st AMS Annual Meeting: Seattle, WA, January 23--27, 2011.
+    \item Abatzoglou, J. T., Redmond, K. T., Edwards, L. M., \& Joros, A. (2011). Monitoring of drought in the western United States: metrics suitable for tracking drought historically and throughout the 21st century. 91st AMS Annual Meeting: Seattle, WA, January 23--27, 2011.
+    \item Joros, A., Abatzoglou, J., Favors, J., Tan, B., \& Kaplan, M. (2010). Extratropical Control of Monsoonal Surges into the Great Basin. AMS Mountain Meteorology Conference: Lake Tahoe, CA, August 30--September 3, 2010.
+    \item Tan, B., Joros, A., \& Kaplan, M. L. (2010). The Role of Midlatitude Circulations in Triggering Extratropical Convection during the 2004 North American Monsoon. 90th AMS Annual Meeting: Atlanta, GA, January 17--22, 2010.
+    \item King, K. C., Kaplan, M., Joros, A., Liddle, M., \& Uher, E. (2010). Evaluation of the Operational Multiscale Model with Grid Adaptivity (OMEGA) for use in Wind Energy Potential Assessment in the Great Basin of Nevada. AMS Mountain Meteorology Conference: Lake Tahoe, CA, August 30--September 3, 2010.
  \end{enumerate}
 
 
